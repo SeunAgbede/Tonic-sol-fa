@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <h1>Tonic sol-fa</h1>
+  <br>
+  <p>A neomorphic approach to<br><a href="https://javascript30.com/">Wes Bros</a> JavaScript Drumkit.</p>
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <p class="sound">do</p>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <p class="sound">re</p>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <p class="sound">mi</p>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <p class="sound">fa</p>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <p class="sound">so</p>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <p class="sound">la</p>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <p class="sound">ti</p>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <p class="sound">do</p>
+    </div>
+  </div>
+
+  <p id="footer">By Seun Agbede</p>
+
+  <audio data-key="65" src="sounds2/DO.wav"></audio>
+  <audio data-key="83" src="sounds2/RE.wav"></audio>
+  <audio data-key="68" src="sounds2/MI.wav"></audio>
+  <audio data-key="70" src="sounds2/FA.wav"></audio>
+  <audio data-key="71" src="sounds2/SO.wav"></audio>
+  <audio data-key="72" src="sounds2/LA.wav"></audio>
+  <audio data-key="74" src="sounds2/TI.wav"></audio>
+  <audio data-key="75" src="sounds2/DO_upper.wav"></audio>
+
+<script>
+  
+  function playSound (e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (!audio) return; // stop the function from running
+    audio.currentTime = 0; // rewinds to the start
+    audio.play();
+    key.classList.add('playing');
+  };
+  
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // skip if its not a transform
+    this.classList.remove('playing');
+  }
+  
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+  
+
+</script>
+
+
+</body>
+</html>
