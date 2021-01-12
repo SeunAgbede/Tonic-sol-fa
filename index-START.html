@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="/script.js"></script>
 </head>
 <body>
 
@@ -58,30 +59,6 @@
   <audio data-key="72" src="sounds2/LA.wav"></audio>
   <audio data-key="74" src="sounds2/TI.wav"></audio>
   <audio data-key="75" src="sounds2/DO_upper.wav"></audio>
-
-<script>
-  
-  function playSound (e){
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return; // stop the function from running
-    audio.currentTime = 0; // rewinds to the start
-    audio.play();
-    key.classList.add('playing');
-  };
-  
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return; // skip if its not a transform
-    this.classList.remove('playing');
-  }
-  
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
-  
-
-</script>
-
 
 </body>
 </html>
