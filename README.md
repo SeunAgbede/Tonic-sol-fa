@@ -3,6 +3,6 @@
 
 This is one of my early projects and it takes on a neomorphic styled approach to [Wes Bros](https://javascript30.com/) JavaScript Drumkit.
 
-You can view this mini project here -> https://tonic-sol-fa.netlify.app/
+You can view this project here -> https://tonic-sol-fa.netlify.app/
 
 Thank you.
